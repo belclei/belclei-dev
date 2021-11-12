@@ -7,6 +7,7 @@ import { Meta } from '../components/Meta'
 // import { Main } from '../templates/Main'
 // import { Config } from '../utils/Config'
 import { getAllPosts } from '../services/Content'
+import { Main } from '../components/Main'
 
 interface BlogProps {
   posts: [
@@ -19,16 +20,17 @@ interface BlogProps {
   ]
 }
 const Blog = ({ posts }: BlogProps) => (
-  <>
-    <Meta title="Blog" />
-    {posts.map(post => (
-      <div key={post.slug}>
-        <h1>{post.title}</h1>
-        <p>{post.subtitle}</p>
-        <output>{post.createdAt}</output>
-      </div>
-    ))}
-  </>
+  <Main meta={<Meta title="Blog" />}>
+    <div>
+      {posts.map(post => (
+        <div key={post.slug}>
+          <h1>{post.title}</h1>
+          <p>{post.subtitle}</p>
+          <output>{post.createdAt}</output>
+        </div>
+      ))}
+    </div>
+  </Main>
 )
 
 export const getStaticProps: GetStaticProps = async () => {

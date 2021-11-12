@@ -3,8 +3,8 @@ import React from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import { Config } from '../constants/config'
-import { addTrailingSlash } from '../utils/Url'
+import { Config } from '../../constants/config'
+import { addTrailingSlash } from '../../utils/Url'
 
 type IMetaProps = {
   title: string
