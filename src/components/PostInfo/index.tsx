@@ -10,12 +10,12 @@ interface PostInfoProps {
 export function PostInfo(props: PostInfoProps) {
   return (
     <HStack my="2" spacing="4" color="text.200">
-      <HStack>
-        <TiCalendarOutline size={18} />
+      <HStack alignItems="start">
+        <TiCalendarOutline size={20} />
         <Text>{props.createdAt}</Text>
       </HStack>
-      <HStack>
-        <TiStopwatch size={18} />
+      <HStack alignItems="start">
+        <TiStopwatch size={20} />
         <Text>{props.time} min de leitura</Text>
       </HStack>
     </HStack>
