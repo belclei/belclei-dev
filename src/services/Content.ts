@@ -32,7 +32,7 @@ export function getPostByName(name: string, fields: string[] = []) {
       items[field] = content
     }
     if (data[field]) {
-      items[field] = data[field]
+      items[field] = data[field] ?? null
     }
   })
 

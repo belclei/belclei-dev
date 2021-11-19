@@ -13,6 +13,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@mapbox/rehype-prism": "^0.8.0",
+    "date-fns": "^2.0.0-beta.5",
     "framer-motion": "^4",
     "gray-matter": "^4.0.3",
     "next": "12.0.1",

@@ -19,8 +19,7 @@ export const theme = extendTheme({
   fonts: {
     logo: 'Kaushan Script',
     heading: 'Poppins',
-    body: 'Raleway',
-    mono: ''
+    body: 'Raleway'
   },
   styles: {
     global: {
@@ -33,22 +32,29 @@ export const theme = extendTheme({
         _hover: { color: 'heading.600' }
       },
       h1: {
-        color: 'heading.700'
+        color: 'heading.700',
+        fontSize: 'xl',
+        _hover: { color: 'heading.600' }
       },
       h2: {
-        color: 'heading.700'
+        color: 'heading.700',
+        _hover: { color: 'heading.600' }
       },
       h3: {
-        color: 'heading.700'
+        color: 'heading.700',
+        _hover: { color: 'heading.600' }
       },
       h4: {
-        color: 'heading.700'
+        color: 'heading.700',
+        _hover: { color: 'heading.600' }
       },
       h5: {
-        color: 'heading.700'
+        color: 'heading.700',
+        _hover: { color: 'heading.600' }
       },
       h6: {
-        color: 'heading.700'
+        color: 'heading.700',
+        _hover: { color: 'heading.600' }
       }
     }
   }

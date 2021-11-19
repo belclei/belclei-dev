@@ -4,19 +4,34 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 
 import { getAllPosts, getPostBySlug } from '../../services/Content'
 import { markdownToHtml } from '../../services/Markdown'
+import { Meta } from '../../components/Meta'
+import { Main } from '../../components/Main'
+import { Box, Heading, HStack, Text } from '@chakra-ui/layout'
+import { TiCalendarOutline, TiStopwatch } from 'react-icons/ti'
+import { PostHeader } from '../../components/PostHeader'
+import { ptBR } from 'date-fns/locale'
+import { format } from 'date-fns'
 
 type IPostUrl = {
   slug: string
 }
-type IPostProps = {
+type PostPageProps = {
+  slug: string
+  title: string
+  subtitle: string
+  createdAt: string
+  time: number
   content: string
 }
 
-const DisplayPost = (props: IPostProps) => (
-  <div
-    // eslint-disable-next-line react/no-danger
-    dangerouslySetInnerHTML={{ __html: props.content }}
-  />
+const PostPage = (props: PostPageProps) => (
+  <Main meta={<Meta title={props.title} description={props.subtitle} />}>
+    <PostHeader title={props.title} subtitle={props.subtitle} time={props.time} createdAt={props.createdAt} />
+    <div
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: props.content }}
+    />
+  </Main>
 )
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -32,16 +47,30 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<IPostProps, IPostUrl> = async ({ params }) => {
-  const post = getPostBySlug(params!.slug, ['content'])
+export const getStaticProps: GetStaticProps<PostPageProps, IPostUrl> = async ({ params }) => {
+  const {
+    title,
+    subtitle,
+    createdAt,
+    content: postContent
+  } = getPostBySlug(params!.slug, ['title', 'subtitle', 'createdAt', 'content'])
 
-  const content = await markdownToHtml(post.content || '')
+  const content = await markdownToHtml(postContent || '')
+  const time = Math.ceil(postContent.split(' ').length / 200)
+  const formattedCreatedAt = format(new Date(createdAt), "dd MMM yyyy', às ' HH:mm", {
+    locale: ptBR
+  })
 
   return {
     props: {
+      slug: params!.slug,
+      title,
+      subtitle,
+      createdAt: formattedCreatedAt,
+      time,
       content
     }
   }
 }
 
-export default DisplayPost
+export default PostPage

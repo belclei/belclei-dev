@@ -3,7 +3,7 @@ slug: 'internet'
 title: 'Internet'
 subtitle: 'Você ainda consegue imaginar a tua vida sem internet? Ela não chegou ao nosso acesso há muito tempo.
 Mesmo assim, teve gente que passou por sérios problemas outro dia que aplicativos de mensagens instantâneas passaram por instabilidades e pessoas simplesmente esqueceram que poderiam se comunicar por simples ligações telefônicas.'
-createdAt: '2021-11-01'
+createdAt: '2021-11-01 03:33:33'
 ---
 
 # Internet
