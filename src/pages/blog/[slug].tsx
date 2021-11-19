@@ -10,7 +10,7 @@ import { ptBR } from 'date-fns/locale'
 import { format } from 'date-fns'
 import { PostContent } from '../../components/PostContent'
 import { useRouter } from 'next/router'
-import { Text, Heading } from '@chakra-ui/react'
+import { Text, Heading, Image } from '@chakra-ui/react'
 import { Loading } from '../../components/Loading'
 import Comments from '../../components/Comments'
 import { Share } from '../../components/Share'
@@ -23,7 +23,9 @@ type PostPageProps = {
   title: string
   subtitle: string
   createdAt: string
+  metaDate: string
   time: number
+  image: string
   content: string
 }
 
@@ -32,9 +34,15 @@ const PostPage = (props: PostPageProps) => {
   if (router.isFallback) {
     return <Loading />
   }
+  const metaPost = {
+    image: props.image,
+    date: props.metaDate,
+    modified_date: props.metaDate
+  }
   return (
-    <Main meta={<Meta title={props.title} description={props.subtitle} />}>
+    <Main meta={<Meta title={props.title} description={props.subtitle} post={metaPost} />}>
       <PostHeader title={props.title} subtitle={props.subtitle} time={props.time} createdAt={props.createdAt} />
+      <Image src={props.image} alt={props.title} />
       <PostContent content={props.content} />
       <Share post={props} />
       <Heading my="4" colorScheme="heading" size="md">
@@ -63,8 +71,9 @@ export const getStaticProps: GetStaticProps<PostPageProps, IPostUrl> = async ({ 
     title,
     subtitle,
     createdAt,
-    content: postContent
-  } = getPostBySlug(params!.slug, ['title', 'subtitle', 'createdAt', 'content'])
+    content: postContent,
+    image
+  } = getPostBySlug(params!.slug, ['title', 'subtitle', 'createdAt', 'content', 'image'])
 
   const content = await markdownToHtml(postContent || '')
 
@@ -79,7 +88,9 @@ export const getStaticProps: GetStaticProps<PostPageProps, IPostUrl> = async ({ 
       title,
       subtitle,
       createdAt: formattedCreatedAt,
+      metaDate: createdAt,
       time,
+      image,
       content
     }
   }

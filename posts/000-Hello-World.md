@@ -3,9 +3,10 @@ slug: 'hello-world'
 title: 'Hello World 🥳'
 subtitle: 'Reza a lenda de que sempre que um programador começa a usar uma nova tecnologia, para ter sorte em sua nova empreitada, deve iniciar com "Hello World". Eu é que não ia ser bobo de arriscar logo agora com meu blog. Deixa pro próximo framework javascript que eu for testar.'
 createdAt: '2021-10-31 12:14:28'
+image: '/posts/000/helloworld.jpg'
 ---
 
-## Bel... quem?
+# Bel... quem?
 
 Meu nome provavelmente não é muito conhecido por você ainda, então deixa eu me apresentar. Meu nome é Belclei Fasolo e sou desenvolvedor de software.
 
@@ -21,7 +22,7 @@ O profissional considerado a vedete da vez no mercado de desenvolvimento, já n�
 
 Venho direcionando minha carreira neste sentido, e te convido para me acompanhar neste caminho, para crescermos juntos, sendo cada vez melhores profissionais.
 
-## Compartilhar
+# Compartilhar
 
 Durante uma das minhas pausas, nas noites de estudos, me deparei com um vídeo de um trecho de palestra do professor Mário Sérgio Cortella. Dizia ele:
 
@@ -37,7 +38,7 @@ Estou bastante feliz e orgulhoso com o resultado causado por esta inspiração. 
 
 Pretendo falar sobre todas estas tecnologias nas postagens que ainda virão neste blog. Você tem interesse?
 
-## Entre e fique à vontade
+# Entre e fique à vontade
 
 Este blog está sendo construído com muito carinho, também como uma oportunidade de estudar design e prototipação no Figma, além de todas as tecnologias envolvidas no desenvolvimento do projeto em si.
 

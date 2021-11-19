@@ -20,16 +20,16 @@ export function Share(props: ShareProps) {
         Compartilhe este post:
       </Heading>
       <a
-        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(props.post.title)}&url=${encodeURIComponent(
-          currentURL
-        )}`}
+        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+          `Encontrei esse post no blog do @belclei: ${props.post.title}`
+        )}&url=${encodeURIComponent(currentURL)}`}
         target="_blank"
         rel="noreferrer"
       >
         <SiTwitter size={18} />
       </a>
       <a
-        href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
           currentURL
         )}&title=${encodeURIComponent(props.post.title)}&summary=${encodeURIComponent(props.post.subtitle)}&source="${
           Config.site_name
