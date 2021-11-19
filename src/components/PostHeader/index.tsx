@@ -1,6 +1,7 @@
 import React from 'react'
 import { Flex, Heading, Box } from '@chakra-ui/react'
 import { PostInfo } from '../PostInfo'
+import { Share } from '../Share'
 
 interface PostHeaderProps {
   title: string
@@ -16,6 +17,7 @@ export function PostHeader(props: PostHeaderProps) {
         {props.title}
       </Heading>
       <PostInfo createdAt={props.createdAt} time={props.time} />
+      <Share post={props} />
       <Box my="4" fontSize="md" dangerouslySetInnerHTML={{ __html: props.subtitle }} />
     </Flex>
   )

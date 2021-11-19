@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { GetStaticPaths, GetStaticProps } from 'next'
-
 import { getAllPosts, getPostBySlug } from '../../services/Content'
 import { markdownToHtml } from '../../services/Markdown'
 import { Meta } from '../../components/Meta'
@@ -11,8 +10,10 @@ import { ptBR } from 'date-fns/locale'
 import { format } from 'date-fns'
 import { PostContent } from '../../components/PostContent'
 import { useRouter } from 'next/router'
-import { Text } from '@chakra-ui/react'
+import { Text, Heading } from '@chakra-ui/react'
 import { Loading } from '../../components/Loading'
+import Comments from '../../components/Comments'
+import { Share } from '../../components/Share'
 
 type IPostUrl = {
   slug: string
@@ -35,6 +36,11 @@ const PostPage = (props: PostPageProps) => {
     <Main meta={<Meta title={props.title} description={props.subtitle} />}>
       <PostHeader title={props.title} subtitle={props.subtitle} time={props.time} createdAt={props.createdAt} />
       <PostContent content={props.content} />
+      <Share post={props} />
+      <Heading my="4" colorScheme="heading" size="md">
+        Comentários
+      </Heading>
+      <Comments />
     </Main>
   )
 }
