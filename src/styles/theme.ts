@@ -8,6 +8,7 @@ export const theme = extendTheme({
     },
     body: {
       '800': '#220054',
+      '700': '#322074',
       '600': '#4300A8'
     },
     text: {
@@ -19,7 +20,7 @@ export const theme = extendTheme({
   fonts: {
     logo: 'Kaushan Script',
     heading: 'Poppins',
-    body: 'Raleway'
+    body: 'Montserrat'
   },
   styles: {
     global: {

@@ -11,6 +11,7 @@ import { TiCalendarOutline, TiStopwatch } from 'react-icons/ti'
 import { PostHeader } from '../../components/PostHeader'
 import { ptBR } from 'date-fns/locale'
 import { format } from 'date-fns'
+import { PostContent } from '../../components/PostContent'
 
 type IPostUrl = {
   slug: string
@@ -27,10 +28,7 @@ type PostPageProps = {
 const PostPage = (props: PostPageProps) => (
   <Main meta={<Meta title={props.title} description={props.subtitle} />}>
     <PostHeader title={props.title} subtitle={props.subtitle} time={props.time} createdAt={props.createdAt} />
-    <div
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: props.content }}
-    />
+    <PostContent content={props.content} />
   </Main>
 )
 

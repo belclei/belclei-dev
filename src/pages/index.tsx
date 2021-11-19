@@ -35,7 +35,7 @@ const Blog = ({ posts }: BlogProps) => (
             </a>
           </Link>
           <PostInfo createdAt={post.createdAt} time={post.time} />
-          <Text fontSize="lg">{post.subtitle}</Text>
+          <Text fontSize="md">{post.subtitle}</Text>
         </Box>
       ))}
     </div>
