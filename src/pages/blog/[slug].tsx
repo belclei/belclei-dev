@@ -10,6 +10,9 @@ import { PostHeader } from '../../components/PostHeader'
 import { ptBR } from 'date-fns/locale'
 import { format } from 'date-fns'
 import { PostContent } from '../../components/PostContent'
+import { useRouter } from 'next/router'
+import { Text } from '@chakra-ui/react'
+import { Loading } from '../../components/Loading'
 
 type IPostUrl = {
   slug: string
@@ -23,12 +26,18 @@ type PostPageProps = {
   content: string
 }
 
-const PostPage = (props: PostPageProps) => (
-  <Main meta={<Meta title={props.title} description={props.subtitle} />}>
-    <PostHeader title={props.title} subtitle={props.subtitle} time={props.time} createdAt={props.createdAt} />
-    <PostContent content={props.content} />
-  </Main>
-)
+const PostPage = (props: PostPageProps) => {
+  const router = useRouter()
+  if (router.isFallback) {
+    return <Loading />
+  }
+  return (
+    <Main meta={<Meta title={props.title} description={props.subtitle} />}>
+      <PostHeader title={props.title} subtitle={props.subtitle} time={props.time} createdAt={props.createdAt} />
+      <PostContent content={props.content} />
+    </Main>
+  )
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts(['slug'])

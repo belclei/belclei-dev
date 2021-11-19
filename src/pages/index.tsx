@@ -10,6 +10,8 @@ import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { PostInfo } from '../components/PostInfo'
 import { markdownToHtml } from '../services/Markdown'
+import { useRouter } from 'next/router'
+import { Loading } from '../components/Loading'
 
 interface BlogProps {
   posts: [
@@ -22,7 +24,12 @@ interface BlogProps {
     }
   ]
 }
-const Blog = ({ posts }: BlogProps) => (
+const Blog = ({ posts }: BlogProps) => {
+  const router = useRouter()
+  if (router.isFallback) {
+    return <Loading />
+  }
+  return (
   <Main meta={<Meta title="Blog" />}>
     <div>
       {posts.map(post => (
