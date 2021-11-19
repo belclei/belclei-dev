@@ -6,8 +6,6 @@ import { getAllPosts, getPostBySlug } from '../../services/Content'
 import { markdownToHtml } from '../../services/Markdown'
 import { Meta } from '../../components/Meta'
 import { Main } from '../../components/Main'
-import { Box, Heading, HStack, Text } from '@chakra-ui/layout'
-import { TiCalendarOutline, TiStopwatch } from 'react-icons/ti'
 import { PostHeader } from '../../components/PostHeader'
 import { ptBR } from 'date-fns/locale'
 import { format } from 'date-fns'
@@ -54,6 +52,8 @@ export const getStaticProps: GetStaticProps<PostPageProps, IPostUrl> = async ({ 
   } = getPostBySlug(params!.slug, ['title', 'subtitle', 'createdAt', 'content'])
 
   const content = await markdownToHtml(postContent || '')
+  const formattedSubtitle = await markdownToHtml(subtitle || '')
+
   const time = Math.ceil(postContent.split(' ').length / 200)
   const formattedCreatedAt = format(new Date(createdAt), "dd MMM yyyy', às ' HH:mm", {
     locale: ptBR
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps<PostPageProps, IPostUrl> = async ({ 
     props: {
       slug: params!.slug,
       title,
-      subtitle,
+      subtitle: formattedSubtitle,
       createdAt: formattedCreatedAt,
       time,
       content

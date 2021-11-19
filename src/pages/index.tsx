@@ -2,14 +2,14 @@ import React from 'react'
 
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import { TiCalendarOutline, TiStopwatch } from 'react-icons/ti'
 import { Meta } from '../components/Meta'
 import { getAllPosts } from '../services/Content'
 import { Main } from '../components/Main'
-import { Box, Heading, HStack, Text } from '@chakra-ui/layout'
+import { Box, Heading, Text } from '@chakra-ui/react'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { PostInfo } from '../components/PostInfo'
+import { markdownToHtml } from '../services/Markdown'
 
 interface BlogProps {
   posts: [
@@ -45,13 +45,15 @@ const Blog = ({ posts }: BlogProps) => (
 export const getStaticProps: GetStaticProps = async () => {
   const posts = getAllPosts(['slug', 'title', 'subtitle', 'createdAt', 'content'])
 
-  const formattedPosts = posts.map(post => {
+  const formattedPosts = posts.map(async post => {
+    const formattedSubtitle = await markdownToHtml(post.subtitle || '')
     const time = Math.ceil(post.content.split(' ').length / 200)
     const formattedCreatedAt = format(new Date(post.createdAt), "dd MMM yyyy', às ' HH:mm", {
       locale: ptBR
     })
     return {
       ...post,
+      subtitle: formattedSubtitle,
       createdAt: formattedCreatedAt,
       time
     }
