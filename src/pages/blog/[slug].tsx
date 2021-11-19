@@ -67,7 +67,6 @@ export const getStaticProps: GetStaticProps<PostPageProps, IPostUrl> = async ({ 
   } = getPostBySlug(params!.slug, ['title', 'subtitle', 'createdAt', 'content'])
 
   const content = await markdownToHtml(postContent || '')
-  const formattedSubtitle = await markdownToHtml(subtitle || '')
 
   const time = Math.ceil(postContent.split(' ').length / 200)
   const formattedCreatedAt = format(new Date(createdAt), "dd MMM yyyy', às ' HH:mm", {
@@ -78,7 +77,7 @@ export const getStaticProps: GetStaticProps<PostPageProps, IPostUrl> = async ({ 
     props: {
       slug: params!.slug,
       title,
-      subtitle: formattedSubtitle,
+      subtitle,
       createdAt: formattedCreatedAt,
       time,
       content

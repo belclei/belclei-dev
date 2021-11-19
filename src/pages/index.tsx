@@ -40,7 +40,9 @@ const Blog = ({ posts }: BlogProps) => {
               </Link>
             </Heading>
             <PostInfo createdAt={post.createdAt} time={post.time} />
-            <Box fontSize="md" dangerouslySetInnerHTML={{ __html: post.subtitle }} />
+            <Text my="4" fontSize="md">
+              {post.subtitle}
+            </Text>
           </Box>
         ))}
       </div>
@@ -52,14 +54,12 @@ export const getStaticProps: GetStaticProps = async () => {
   const posts = getAllPosts(['slug', 'title', 'subtitle', 'createdAt', 'content'])
 
   const formattedPosts = posts.map(async post => {
-    const formattedSubtitle = await markdownToHtml(post.subtitle || '')
     const time = Math.ceil(post.content.split(' ').length / 200)
     const formattedCreatedAt = format(new Date(post.createdAt), "dd MMM yyyy', às ' HH:mm", {
       locale: ptBR
     })
     return {
       ...post,
-      subtitle: formattedSubtitle,
       createdAt: formattedCreatedAt,
       time
     }
@@ -72,5 +72,4 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-interface BlogProps {}
 export default Blog

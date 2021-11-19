@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Heading, Box } from '@chakra-ui/react'
+import { Flex, Heading, Text } from '@chakra-ui/react'
 import { PostInfo } from '../PostInfo'
 import { Share } from '../Share'
 
@@ -18,7 +18,9 @@ export function PostHeader(props: PostHeaderProps) {
       </Heading>
       <PostInfo createdAt={props.createdAt} time={props.time} />
       <Share post={props} />
-      <Box my="4" fontSize="md" dangerouslySetInnerHTML={{ __html: props.subtitle }} />
+      <Text my="4" fontSize="md">
+        {props.subtitle}
+      </Text>
     </Flex>
   )
 }
