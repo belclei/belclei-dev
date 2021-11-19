@@ -30,24 +30,25 @@ const Blog = ({ posts }: BlogProps) => {
     return <Loading />
   }
   return (
-  <Main meta={<Meta title="Blog" />}>
-    <div>
-      {posts.map(post => (
-        <Box px="4" mb="4" pb="4" key={post.slug}>
-          <Link href={`/blog/${post.slug}`}>
-            <a>
-              <Heading colorScheme="heading" size="lg">
-                {post.title}
-              </Heading>
-            </a>
-          </Link>
-          <PostInfo createdAt={post.createdAt} time={post.time} />
-          <Text fontSize="md">{post.subtitle}</Text>
-        </Box>
-      ))}
-    </div>
-  </Main>
-)
+    <Main meta={<Meta title="Blog" />}>
+      <div>
+        {posts.map(post => (
+          <Box px="4" mb="4" pb="4" key={post.slug}>
+            <Link href={`/blog/${post.slug}`}>
+              <a>
+                <Heading colorScheme="heading" size="lg">
+                  {post.title}
+                </Heading>
+              </a>
+            </Link>
+            <PostInfo createdAt={post.createdAt} time={post.time} />
+            <Box fontSize="md" dangerouslySetInnerHTML={{ __html: post.subtitle }} />
+          </Box>
+        ))}
+      </div>
+    </Main>
+  )
+}
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = getAllPosts(['slug', 'title', 'subtitle', 'createdAt', 'content'])
@@ -68,7 +69,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      posts: formattedPosts
+      posts: await Promise.all(formattedPosts)
     }
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Heading, HStack, Text } from '@chakra-ui/react'
+import { Flex, Heading, Box } from '@chakra-ui/react'
 import { PostInfo } from '../PostInfo'
 
 interface PostHeaderProps {
@@ -16,7 +16,7 @@ export function PostHeader(props: PostHeaderProps) {
         {props.title}
       </Heading>
       <PostInfo createdAt={props.createdAt} time={props.time} />
-      <Text my="4">{props.subtitle}</Text>
+      <Box my="4" fontSize="md" dangerouslySetInnerHTML={{ __html: props.subtitle }} />
     </Flex>
   )
 }
