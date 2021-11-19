@@ -34,13 +34,11 @@ const Blog = ({ posts }: BlogProps) => {
       <div>
         {posts.map(post => (
           <Box px="4" mb="4" pb="4" key={post.slug}>
-            <Link href={`/blog/${post.slug}`}>
-              <a>
-                <Heading colorScheme="heading" size="lg">
-                  {post.title}
-                </Heading>
-              </a>
-            </Link>
+            <Heading colorScheme="heading" size="lg">
+              <Link href={`/blog/${post.slug}`}>
+                <a>{post.title}</a>
+              </Link>
+            </Heading>
             <PostInfo createdAt={post.createdAt} time={post.time} />
             <Box fontSize="md" dangerouslySetInnerHTML={{ __html: post.subtitle }} />
           </Box>

@@ -4,7 +4,7 @@ export const theme = extendTheme({
   colors: {
     heading: {
       '700': '#F11F15',
-      '600': '#F1154A'
+      '600': '#CC3355'
     },
     body: {
       '800': '#220054',
@@ -12,14 +12,13 @@ export const theme = extendTheme({
       '600': '#4300A8'
     },
     text: {
-      '600': '#2EF188',
-      '400': '#F1D2D9',
-      '200': '#D9C3C8'
+      '400': '#F1EECD',
+      '200': '#BDAAAE'
     }
   },
   fonts: {
     logo: 'Kaushan Script',
-    heading: 'Poppins',
+    heading: 'Mukta',
     body: 'Montserrat'
   },
   styles: {
@@ -34,28 +33,22 @@ export const theme = extendTheme({
       },
       h1: {
         color: 'heading.700',
-        fontSize: 'xl',
-        _hover: { color: 'heading.600' }
+        fontSize: 'xl'
       },
       h2: {
-        color: 'heading.700',
-        _hover: { color: 'heading.600' }
+        color: 'heading.700'
       },
       h3: {
-        color: 'heading.700',
-        _hover: { color: 'heading.600' }
+        color: 'heading.700'
       },
       h4: {
-        color: 'heading.700',
-        _hover: { color: 'heading.600' }
+        color: 'heading.700'
       },
       h5: {
-        color: 'heading.700',
-        _hover: { color: 'heading.600' }
+        color: 'heading.700'
       },
       h6: {
-        color: 'heading.700',
-        _hover: { color: 'heading.600' }
+        color: 'heading.700'
       }
     }
   }
