@@ -54,12 +54,12 @@ const PostPage = (props: PostPageProps) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts(['slug'])
+  //const posts = getAllPosts(['slug'])
 
   return {
-    paths: posts.map(post => ({
+    paths: [0, 1, 2].map(post => ({
       params: {
-        slug: post.slug
+        slug: 'teste'
       }
     })),
     fallback: true
@@ -67,6 +67,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps<PostPageProps, IPostUrl> = async ({ params }) => {
+  /*
   if (!params || !params.slug) {
     return {
       notFound: true
@@ -96,6 +97,20 @@ export const getStaticProps: GetStaticProps<PostPageProps, IPostUrl> = async ({ 
       time,
       image,
       content
+    }
+  } */
+  return {
+    props: {
+      slug: 'teste',
+      title: 'Teste Titulo',
+      subtitle:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nihil fugiat voluptatem ullam quos doloribus minima dignissimos, exercitationem blanditiis eius, praesentium eum vitae tempore reiciendis voluptates maiores totam iusto omnis!',
+      createdAt: '02 out 2020, às 23:44',
+      metaDate: '2020-10-02 23:44:00',
+      time: 6,
+      image: '/posts/000/helloworld.jpg',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ratione animi vel rerum officiis molestiae, eveniet error? Distinctio quia sed quam illo non ipsam ipsum earum omnis, aliquam tempora perspiciatis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi voluptatum recusandae cum asperiores aliquam libero ad, assumenda mollitia ut quos. Deleniti laborum quo, consequuntur reprehenderit saepe doloribus id! Distinctio, corrupti.'
     }
   }
 }
