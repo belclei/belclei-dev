@@ -8,7 +8,9 @@ const Page404 = () => {
   return (
     <Main meta={<Meta title="Blog" />}>
       <Flex alignItems="center" justifyContent="center" w="full">
-        <Heading colorScheme="heading">Ué?! Parece que esse conteúdo não existe.</Heading>
+        <Heading colorScheme="heading" textAlign="center">
+          Ué?! Parece que esse conteúdo não existe.
+        </Heading>
       </Flex>
     </Main>
   )

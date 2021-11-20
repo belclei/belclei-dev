@@ -17,7 +17,7 @@ export function PostHeader(props: PostHeaderProps) {
         {props.title}
       </Heading>
       <PostInfo createdAt={props.createdAt} time={props.time} />
-      <Share post={props} />
+      {/*<Share post={props} />*/}
       <Text my="4" fontSize="md">
         {props.subtitle}
       </Text>

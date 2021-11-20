@@ -44,7 +44,7 @@ const PostPage = (props: PostPageProps) => {
       <PostHeader title={props.title} subtitle={props.subtitle} time={props.time} createdAt={props.createdAt} />
       <Image src={props.image} alt={props.title} />
       <PostContent content={props.content} />
-      <Share post={props} />
+      {/*<Share post={props} />*/}
       <Heading my="4" colorScheme="heading" size="md">
         Comentários
       </Heading>
