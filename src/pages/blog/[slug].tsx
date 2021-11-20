@@ -12,8 +12,6 @@ import { PostContent } from '../../components/PostContent'
 import { useRouter } from 'next/router'
 import { Text, Heading, Image } from '@chakra-ui/react'
 import { Loading } from '../../components/Loading'
-import Comments from '../../components/Comments'
-import { Share } from '../../components/Share'
 
 type IPostUrl = {
   slug: string
@@ -48,7 +46,7 @@ const PostPage = (props: PostPageProps) => {
       <Heading my="4" colorScheme="heading" size="md">
         Comentários
       </Heading>
-      <Comments />
+      {/*<Comments />*/}
     </Main>
   )
 }
