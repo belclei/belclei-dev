@@ -12,7 +12,7 @@ export function Main(props: MainProps) {
     <Flex as="main" w="100vw" h="100vh" direction="column">
       {props.meta}
       <Header />
-      <Box maxW="800px" w="50rem" mx="auto">
+      <Box maxW="800px" mx="auto" px="4">
         {props.children}
       </Box>
     </Flex>
