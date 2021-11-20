@@ -42,7 +42,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   const names = getPostFileNames()
   const name = names.find(name => new RegExp(`\\d{3,}-${slug}.md`, 'gi').test(name))
 
-  return getPostByName(name!, fields)
+  return name ? getPostByName(name, fields) : null
 }
 
 export function getAllPosts(fields: string[] = []) {

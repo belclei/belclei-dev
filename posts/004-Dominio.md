@@ -1,3 +1,12 @@
+---
+slug: 'dominio'
+title: 'Dominio'
+subtitle: 'Você sabia que milhares de pessoas no mundo acreditam que a _Internet_ **é** o _Facebook_?
+Pelo menos foi isso que mostrou o relatório da saúde da internet, de 2017, criado pela Mozilla. Só no Brasil, 55% dos entrevistados pensavam assim.'
+image: '/posts/000/helloworld.jpg'
+createdAt: '2021-12-01'
+---
+
 Oi, tudo bem?
 
 Você sabia que já são quase 2 **bilhões** de domínios registrados na internet? Isso mesmo, 2 bilhões de combinações de "www-ponto-nome-do-site-ponto-com-bla-bla-bla". Já tá ficando difícil achar algum nome bom para um site. Claro que esse problema eu não tive. Olha meu site: [www.belclei.dev.br](http://www.belclei.dev.br)

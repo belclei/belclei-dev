@@ -67,14 +67,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps<PostPageProps, IPostUrl> = async ({ params }) => {
-  const {
-    title,
-    subtitle,
-    createdAt,
-    content: postContent,
-    image
-  } = getPostBySlug(params!.slug, ['title', 'subtitle', 'createdAt', 'content', 'image'])
-
+  if (!params || !params.slug) {
+    return {
+      notFound: true
+    }
+  }
+  const post = getPostBySlug(params.slug, ['title', 'subtitle', 'createdAt', 'content', 'image'])
+  if (post === null) {
+    return {
+      notFound: true
+    }
+  }
+  const { title, subtitle, createdAt, content: postContent, image } = post
   const content = await markdownToHtml(postContent || '')
 
   const time = Math.ceil(postContent.split(' ').length / 200)
@@ -84,7 +88,7 @@ export const getStaticProps: GetStaticProps<PostPageProps, IPostUrl> = async ({ 
 
   return {
     props: {
-      slug: params!.slug,
+      slug: params.slug,
       title,
       subtitle,
       createdAt: formattedCreatedAt,
