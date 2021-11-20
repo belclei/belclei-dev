@@ -12,6 +12,8 @@ import { PostContent } from '../../components/PostContent'
 import { useRouter } from 'next/router'
 import { Text, Heading, Image } from '@chakra-ui/react'
 import { Loading } from '../../components/Loading'
+import { Share } from '../../components/Share'
+import Comments from '../../components/Comments'
 
 type IPostUrl = {
   slug: string
@@ -42,11 +44,11 @@ const PostPage = (props: PostPageProps) => {
       <PostHeader title={props.title} subtitle={props.subtitle} time={props.time} createdAt={props.createdAt} />
       <Image src={props.image} alt={props.title} />
       <PostContent content={props.content} />
-      {/*<Share post={props} />*/}
+      <Share post={props} />
       <Heading my="4" colorScheme="heading" size="md">
         Comentários
       </Heading>
-      {/*<Comments />*/}
+      <Comments />
     </Main>
   )
 }
